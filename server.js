@@ -3,14 +3,11 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, "public/")));
+app.use(express.static(path.resolve(__dirname, "build/")));
 
-app.get("/", (req, res) => {
-  const pathToIndex = path.join(__dirname, "public/", "index.html");
-
-  console.log(pathToIndex);
-
-  res.sendFile(pathToIndex);
+app.get("/home/", (req, res) => {
+  console.log("Battou log HOME");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(3000, () => {
